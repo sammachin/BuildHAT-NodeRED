@@ -1,0 +1,34 @@
+{
+  "name": "@sammachin/buildhat-nodered",
+  "version": "0.0.1",
+  "description": "Node RED package for the Raspberry Pi Build HAT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sammachin/buildhat-nodered.git"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "author": "Sam Machin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sammachin/buildhat-nodered/issues"
+  },
+  "homepage": "https://github.com/sammachin/buildhat-nodered#readme",
+  "node-red": {
+    "nodes": {
+      "buildhat_motor": "motor.js",
+      "buildhat_colordistance": "colordistance.js",
+      "buildhat_conf": "hat.js",
+      "buildhat_command": "command.js",
+      "buildhat_readmotor": "readmotor.js"
+    }
+  },
+  "dependencies": {
+    "serialport": "*"
+  }
+}

@@ -1,0 +1,125 @@
+[
+    {
+        "id": "c9443989a83b5502",
+        "type": "buildhat_colordistance",
+        "z": "388977d31b83d1c3",
+        "name": "Counter B",
+        "hat": "1c2f40c3d5010026",
+        "port": "1",
+        "sensor": "2",
+        "x": 470,
+        "y": 100,
+        "wires": [
+            [
+                "c8abfc8098e2cefd"
+            ]
+        ]
+    },
+    {
+        "id": "623c6a5af2ca5937",
+        "type": "inject",
+        "z": "388977d31b83d1c3",
+        "name": "read",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "go",
+        "payloadType": "str",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "e16c31a62f5c82f1"
+            ]
+        ]
+    },
+    {
+        "id": "c8abfc8098e2cefd",
+        "type": "debug",
+        "z": "388977d31b83d1c3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e16c31a62f5c82f1",
+        "type": "buildhat_colordistance",
+        "z": "388977d31b83d1c3",
+        "name": "RGB B",
+        "hat": "1c2f40c3d5010026",
+        "port": "1",
+        "sensor": "6",
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "a254243122c0e467"
+            ]
+        ]
+    },
+    {
+        "id": "3dc818b69c768cfb",
+        "type": "inject",
+        "z": "388977d31b83d1c3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "read",
+        "payloadType": "str",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "c9443989a83b5502"
+            ]
+        ]
+    },
+    {
+        "id": "a254243122c0e467",
+        "type": "debug",
+        "z": "388977d31b83d1c3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1c2f40c3d5010026",
+        "type": "buildhat_conf",
+        "name": "Hat",
+        "serialport": "/dev/serial0",
+        "dbg": "false"
+    }
+]

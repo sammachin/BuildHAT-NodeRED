@@ -1,0 +1,66 @@
+[
+    {
+        "id": "dbb4d9f444c376dd",
+        "type": "buildhat_readmotor",
+        "z": "388977d31b83d1c3",
+        "name": "",
+        "hat": "1c2f40c3d5010026",
+        "port": "0",
+        "sensor": "2",
+        "x": 470,
+        "y": 520,
+        "wires": [
+            [
+                "1c44ddf8d94db27f"
+            ]
+        ]
+    },
+    {
+        "id": "b057f72fe2d8aa72",
+        "type": "inject",
+        "z": "388977d31b83d1c3",
+        "name": "read",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "go",
+        "payloadType": "str",
+        "x": 190,
+        "y": 520,
+        "wires": [
+            [
+                "dbb4d9f444c376dd"
+            ]
+        ]
+    },
+    {
+        "id": "1c44ddf8d94db27f",
+        "type": "debug",
+        "z": "388977d31b83d1c3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1c2f40c3d5010026",
+        "type": "buildhat_conf",
+        "name": "Hat",
+        "serialport": "/dev/serial0",
+        "dbg": "false"
+    }
+]

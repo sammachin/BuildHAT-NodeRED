@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    RED.nodes.registerType('buildhat_command',{
+        category: 'BuildHAT',
+        color: '#20c997',
+        defaults: {
+          name: {default: ""},
+          hat: { value: "", type: "buildhat_conf", required: true },
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-circle",
+        label: function() {
+            return this.name || "Command";
+        },
+        paletteLabel: "Command",
+    
+    });
+</script>
+    
+<script type="text/x-red" data-template-name="buildhat_command">
+
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+   
+    <div class="form-row">
+        <label for="node-config-input-hat">Hat</label>
+        <input type="text" id="node-input-hat" style="width:70%;">
+    </div>
+    
+
+
+</script>
+
+
+<script type="text/markdown" data-help-name="buildhat_command"> 
+Send a Command
+### Inputs
+: payload (string) the command to be sent to the hat
+
+### Outputs
+: payload (string) One message per line received from the hat
+    
+### Details 
+Send an aritary command string to the hat. Any data received from the hat (for any node) will be sent by this node too.
+
+### Reference
+    
+[BuildHAT Serial Protocol](https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf)
+
+</script>

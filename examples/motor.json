@@ -1,0 +1,142 @@
+[
+    {
+        "id": "82d2404ae51093f6",
+        "type": "inject",
+        "z": "388977d31b83d1c3",
+        "name": "Stop",
+        "props": [
+            {
+                "p": "speed",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 210,
+        "y": 780,
+        "wires": [
+            [
+                "664c20dad4598101"
+            ]
+        ]
+    },
+    {
+        "id": "a869ce4b32f91dd8",
+        "type": "debug",
+        "z": "388977d31b83d1c3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "664c20dad4598101",
+        "type": "buildhat_motor",
+        "z": "388977d31b83d1c3",
+        "name": "Motor A",
+        "hat": "1c2f40c3d5010026",
+        "port": "0",
+        "speed": "",
+        "x": 460,
+        "y": 700,
+        "wires": [
+            [
+                "a869ce4b32f91dd8"
+            ]
+        ]
+    },
+    {
+        "id": "92cc5f632be57dac",
+        "type": "inject",
+        "z": "388977d31b83d1c3",
+        "name": "Half Speed",
+        "props": [
+            {
+                "p": "speed",
+                "v": "0.5",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 240,
+        "y": 600,
+        "wires": [
+            [
+                "664c20dad4598101"
+            ]
+        ]
+    },
+    {
+        "id": "0974df48f8667956",
+        "type": "inject",
+        "z": "388977d31b83d1c3",
+        "name": "Full Speed",
+        "props": [
+            {
+                "p": "speed",
+                "v": "2",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 220,
+        "y": 660,
+        "wires": [
+            [
+                "664c20dad4598101"
+            ]
+        ]
+    },
+    {
+        "id": "20d96b3bf2c58db3",
+        "type": "inject",
+        "z": "388977d31b83d1c3",
+        "name": "Half Reverse",
+        "props": [
+            {
+                "p": "speed",
+                "v": "-0.5",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 230,
+        "y": 720,
+        "wires": [
+            [
+                "664c20dad4598101"
+            ]
+        ]
+    },
+    {
+        "id": "1c2f40c3d5010026",
+        "type": "buildhat_conf",
+        "name": "Hat",
+        "serialport": "/dev/serial0",
+        "dbg": "false"
+    }
+]

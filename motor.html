@@ -1,0 +1,81 @@
+<script type="text/javascript">
+    RED.nodes.registerType('buildhat_motor',{
+        category: 'BuildHAT',
+        color: '#20c997',
+        defaults: {
+          name: {default: ""},
+          hat: { value: "", type: "buildhat_conf", required: true },
+          port: {value:""},
+          speed: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-circle",
+        label: function() {
+            return this.name || "BuildHAT Motor";
+        },
+        paletteLabel: "Motor",
+        oneditprepare: function() {
+            var node = this;            
+            $("#node-input-port").typedInput({
+                types: [{
+                    value: "port",
+                    options: [
+                        { value: "0", label: "Port A"},
+                        { value: "1", label: "Port B"},
+                        { value: "2", label: "Port C"},
+                        { value: "3", label: "Port D"}
+                    ]
+                }]
+            })    
+        }
+    });
+</script>
+    
+<script type="text/x-red" data-template-name="buildhat_motor">
+
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-config-input-hat">Hat</label>
+        <input type="text" id="node-input-hat" style="width:70%;">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name">Port</label>
+        <input type="text" id="node-input-port">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-name">Speed</label>
+        <input type="text" id="node-input-speed">
+    </div>
+
+</script>
+
+<script type="text/markdown" data-help-name="buildhat_motor"> 
+Control a Motor
+     
+### Inputs
+    
+: speed (Number | String) :  The speed of the motor between 0 for stopped, and 1 for full speed, negative numbers will reverse the direction.
+        
+### Outputs
+    
+The node does not return any data in itself, the msg will be sent exactly as it was received
+    
+### Details 
+Select the Port (A-D) that the Motor is connected to on the HAT.
+ 
+You can set the speed value here on on the input using `msg.speed`
+ 
+### Compatible Devices
+ 
+This node has been tested with the following devices so far
+Medium Linear Motor - 88008 [Link](https://www.bricklink.com/v2/catalog/catalogitem.page?S=88008-1#T=S&O={%22iconly%22:0})
+Medium Angular Motor - 45603 [Link](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45603-1#T=S&O=%7B%22iconly%22:0%7D)   
+ 
+ </script>

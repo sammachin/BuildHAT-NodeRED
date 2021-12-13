@@ -1,0 +1,96 @@
+<script type="text/javascript">
+    RED.nodes.registerType('buildhat_colordistance',{
+        category: 'BuildHAT',
+        color: '#20c997',
+        defaults: {
+          name: {default: ""},
+          hat: { value: "", type: "buildhat_conf", required: true },
+          port: {value:""},
+          sensor: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-circle",
+        label: function() {
+            return this.name || "Color & Distance";
+        },
+        paletteLabel: "Color & Distance",
+        oneditprepare: function() {
+            var node = this;            
+            $("#node-input-port").typedInput({
+                types: [{
+                    value: "port",
+                    options: [
+                        { value: "0", label: "Port A"},
+                        { value: "1", label: "Port B"},
+                        { value: "2", label: "Port C"},
+                        { value: "3", label: "Port D"}
+                    ]
+                }]
+            })
+            $("#node-input-sensor").typedInput({
+                types: [{
+                    value: "sensor",
+                    options: [
+                        { value: "1", label: "Proximity"},
+                        { value: "2", label: "Counter"},
+                        { value: "3", label: "Reflection"},
+                        { value: "4", label: "Ambient"},
+                        { value: "6", label: "RGB"},
+                    ]
+                }]
+            })    
+        }
+    });
+</script>
+    
+<script type="text/x-red" data-template-name="buildhat_colordistance">
+
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+   
+    <div class="form-row">
+        <label for="node-config-input-hat">Hat</label>
+        <input type="text" id="node-input-hat" style="width:70%;">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-name">Port</label>
+        <input type="text" id="node-input-port">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-sensor">Sensor</label>
+        <input type="text" id="node-input-sensor">
+    </div>
+
+</script>
+
+
+<script type="text/markdown" data-help-name="buildhat_colordistance">
+# Read from a Color & Distance Sensor
+     
+### Outputs
+    
+: payload (Number | Array) Value(s) of the sensor read.
+
+### Details 
+Select the Port (A-D) that the Sensor is connected to on the HAT.
+ 
+Select the sensor to read.
+
+- Proximity Is a short range distance measurement 
+- Counter Increments each time the beam in front of the sensor is broken
+- Reflection Is the level of reflected light
+- Ambient Is the level of ambient light
+- RGB is the Red, Green and Blue values of the object in front of the sensor
+
+
+### Compatible Devices
+ 
+This node has been tested with the following devices so far
+Colour + distance sensor - 88007 [Link](https://www.bricklink.com/v2/catalog/catalogitem.page?S=88007-1#T=S&O=%7B%22iconly%22:0%7D)
+
+</script>

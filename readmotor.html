@@ -1,0 +1,94 @@
+<script type="text/javascript">
+    RED.nodes.registerType('buildhat_readmotor',{
+        category: 'BuildHAT',
+        color: '#20c997',
+        defaults: {
+          name: {default: ""},
+          hat: { value: "", type: "buildhat_conf", required: true },
+          port: {value:""},
+          sensor: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-circle",
+        label: function() {
+            return this.name || "Read Motor";
+        },
+        paletteLabel: "Color & Distance",
+        oneditprepare: function() {
+            var node = this;            
+            $("#node-input-port").typedInput({
+                types: [{
+                    value: "port",
+                    options: [
+                        { value: "0", label: "Port A"},
+                        { value: "1", label: "Port B"},
+                        { value: "2", label: "Port C"},
+                        { value: "3", label: "Port D"}
+                    ]
+                }]
+            })
+            $("#node-input-sensor").typedInput({
+                types: [{
+                    value: "sensor",
+                    options: [
+                        { value: "0", label: "Power"},
+                        { value: "1", label: "Speed"},
+                        { value: "2", label: "Distance"},
+                        { value: "3", label: "Position"},                     
+                    ]
+                }]
+            })    
+        }
+    });
+</script>
+    
+<script type="text/x-red" data-template-name="buildhat_readmotor">
+
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+   
+    <div class="form-row">
+        <label for="node-config-input-hat">Hat</label>
+        <input type="text" id="node-input-hat" style="width:70%;">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-name">Port</label>
+        <input type="text" id="node-input-port">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-sensor">Sensor</label>
+        <input type="text" id="node-input-sensor">
+    </div>
+
+</script>
+
+
+<script type="text/markdown" data-help-name="buildhat_readmotor">
+Read from a Motor
+     
+### Outputs
+    
+: payload (Number) Value of the sensor read.
+
+### Details 
+Select the Port (A-D) that the Motor is connected to on the HAT.
+ 
+Select the Sensor to read
+- Power is ??? 
+- Speed is the Current speed of the motor
+- Distance is the value travelled by the motor, running a motor in reverse (negative value) will reduce the Distance
+- Postiion is only availble on angular motors and is the angle of the motor between +180 and -180 Degrees.
+
+
+### Compatible Devices
+ 
+This node has been tested with the following devices so far
+Medium Linear Motor - 88008 [Link](https://www.bricklink.com/v2/catalog/catalogitem.page?S=88008-1#T=S&O={%22iconly%22:0})
+Medium Angular Motor - 45603 [Link](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45603-1#T=S&O=%7B%22iconly%22:0%7D)   
+ 
+</script>

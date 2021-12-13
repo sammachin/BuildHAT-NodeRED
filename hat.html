@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    RED.nodes.registerType('buildhat_conf',{
+        category: 'config',
+        defaults: {
+            name: {},
+            serialport: {},
+            dbg: {value: 'false'}
+        },
+        label: function() {
+            return this.name || this.serialport;
+        },
+        oneditprepare: function() {
+          $("#node-config-input-dbg").typedInput({
+          types:["bool"],
+          typeField: "#node-config-input-dbg-type"
+          })
+        }
+    });
+  </script>
+  
+  <script type="text/x-red" data-template-name="buildhat_conf">
+    <div>
+        <label for="node-config-input-name">Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+
+    <div>
+      <label for="node-config-input-serialport">Serial Port</label>
+      <input type="text" id="node-config-input-serialport">
+    </div>
+
+    <div>
+      <label for="node-config-input-dbg">Debug</label>
+      <input type="text" id="node-config-input-dbg">
+      <input type="hidden" id="node-config-input-dbg-type">
+    </div>
+
+
+  </script>
+  
+  <script type="text/markdown" data-help-name="buildhat_conf">
+    Configuration for a Build HAT    
+   
+    ### Details
+    Enter the serial port that the Hat is connected to, by default using the GPIO pins on the Pi this wil be `/dev/serial0`
+
+    You should only have one configuration object per hat on the Pi shared between all devices. otherwise you may have issues with opening the port
+
+    If Debug is set to true all serial data recieved from the hat will be logged to the Node-RED console
+  </script>
